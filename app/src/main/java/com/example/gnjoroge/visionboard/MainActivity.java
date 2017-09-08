@@ -1,7 +1,9 @@
 package com.example.gnjoroge.visionboard;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -12,6 +14,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mNewVisionBoardButton = (Button) findViewById(R.id.newVisionBoard)
+        mNewVisionBoardButton = (Button) findViewById(R.id.newVisionBoard);
+        mNewVisionBoardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CategoriesActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }
