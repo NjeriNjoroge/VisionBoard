@@ -28,8 +28,9 @@ public class CategoriesActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String newName = mEditText.getText().toString();
                 String newDescription = mEditText2.getText().toString();
-                Log.d(TAG, newName+newDescription);
+                String newVision = newName + newDescription;
                 Intent intent = new Intent(CategoriesActivity.this, CreatedCategory.class);
+                intent.putExtra("newVision", newVision);
                 startActivity(intent);
             }
         });
