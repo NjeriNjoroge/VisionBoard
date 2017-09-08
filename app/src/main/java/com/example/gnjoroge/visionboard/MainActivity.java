@@ -1,6 +1,8 @@
 package com.example.gnjoroge.visionboard;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mNewVisionBoardButton = (Button) findViewById(R.id.newVisionBoard);
+        //changes the text on the button to white
+        mNewVisionBoardButton.setTextColor(Color.parseColor("white"));
+        mNewVisionBoardButton.setPaintFlags(mNewVisionBoardButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
         mNewVisionBoardButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
