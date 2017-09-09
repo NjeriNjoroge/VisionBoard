@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
         mNewVisionBoardButton = (Button) findViewById(R.id.newVisionBoard);
         //changes the text on the button to white
         mNewVisionBoardButton.setTextColor(Color.parseColor("white"));
-        mNewVisionBoardButton.setPaintFlags(mNewVisionBoardButton.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         mNewVisionBoardButton.setOnClickListener(new View.OnClickListener() {
             @Override
