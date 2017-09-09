@@ -9,15 +9,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CategoriesActivity" />
-        <activity android:name=".CreatedCategory"></activity>
+        <activity android:name=".CategoriesActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gnjoroge.visionboard.MainActivity">
+            </meta-data>
+        </activity>
+        <activity android:name=".CreatedCategory">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gnjoroge.visionboard.CategoriesActivity">
+            </meta-data>
+        </activity>
     </application>
 
 </manifest>
