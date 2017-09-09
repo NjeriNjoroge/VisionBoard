@@ -10,14 +10,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity {
-    private TextView mTitleTextView;
-    private Button mNewVisionBoardButton;
+    @Bind(R.id.textView) TextView mTitleTextView;
+    @Bind(R.id.newVisionBoard) Button mNewVisionBoardButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         //changing the title font
         mTitleTextView = (TextView) findViewById(R.id.textView);

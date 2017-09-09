@@ -13,18 +13,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class CategoriesActivity extends AppCompatActivity {
     private static final String TAG = CategoriesActivity.class.getSimpleName();
-    private Button mAddbutton;
-    private EditText mEditText;
-    private EditText mEditText2;
-    private ListView mListView;
+    @Bind(R.id.Addbutton) Button mAddbutton;
+    @Bind(R.id.editText) EditText mEditText;
+    @Bind(R.id.editText2) EditText mEditText2;
+    @Bind(R.id.listView) ListView mListView;
     private String[] categories = new String[] {"Finances", "Relationships", "Career", "Health", "Travel", "Personal growth"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
+        ButterKnife.bind(this);
         //collecting input from user
         mEditText = (EditText) findViewById(R.id.editText);
         //validating that input is not left blank
