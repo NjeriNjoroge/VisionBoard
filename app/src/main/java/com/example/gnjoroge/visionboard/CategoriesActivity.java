@@ -27,8 +27,10 @@ public class CategoriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categories);
         //collecting input from user
         mEditText = (EditText) findViewById(R.id.editText);
+        //validating that input is not left blank
         if (mEditText.getText().toString().length()==0)
             mEditText.setError("Category name is required!");
+
         mEditText2 = (EditText) findViewById(R.id.editText2);
 
         mAddbutton = (Button) findViewById(R.id.Addbutton);
