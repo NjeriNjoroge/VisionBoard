@@ -18,9 +18,6 @@ import butterknife.ButterKnife;
 
 public class CategoriesActivity extends AppCompatActivity {
     private static final String TAG = CategoriesActivity.class.getSimpleName();
-    @Bind(R.id.Addbutton) Button mAddbutton;
-    @Bind(R.id.editText) EditText mEditText;
-    @Bind(R.id.editText2) EditText mEditText2;
     @Bind(R.id.listView) ListView mListView;
     private String[] categories = new String[] {"Finances", "Relationships", "Career", "Health", "Travel", "Personal growth"};
 
@@ -29,27 +26,6 @@ public class CategoriesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_categories);
         ButterKnife.bind(this);
-        //collecting input from user
-        mEditText = (EditText) findViewById(R.id.editText);
-        //validating that input is not left blank
-        if (mEditText.getText().toString().length()==0)
-            mEditText.setError("Category name is required!");
-
-        mEditText2 = (EditText) findViewById(R.id.editText2);
-
-        mAddbutton = (Button) findViewById(R.id.Addbutton);
-        mAddbutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String newName = mEditText.getText().toString();
-                String newDescription = mEditText2.getText().toString();
-                String newVision = newName + newDescription;
-                Intent intent = new Intent(CategoriesActivity.this, CreatedCategory.class);
-                intent.putExtra("newVision", newVision);
-                startActivity(intent);
-            }
-        });
-
         //displaying the categories
        mListView = (ListView) findViewById(R.id.listView);
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, categories);

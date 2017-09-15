@@ -15,6 +15,7 @@ public class FlickrService {
     //takes the keyword user inputs and a callback to execute the API
     public static void findPhotos(String category, Callback callback) {
 
+        //Creating a New Request with OkHttp
         OkHttpClient client = new OkHttpClient.Builder()
                 .build();
 
