@@ -44,7 +44,6 @@
         android:layout_height="wrap_content"
         android:padding="5dp"
         android:hint="Enter Category"
-        android:inputType="phone"
         android:layout_marginTop="77dp"
         android:layout_alignTop="@+id/newVisionBoard"
         android:layout_centerHorizontal="true" />
