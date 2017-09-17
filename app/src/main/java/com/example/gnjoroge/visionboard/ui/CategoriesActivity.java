@@ -4,9 +4,12 @@ package com.example.gnjoroge.visionboard.ui;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.gnjoroge.visionboard.adapters.CategoryListAdapter;
 import com.example.gnjoroge.visionboard.services.FlickrService;
 import com.example.gnjoroge.visionboard.R;
 import com.example.gnjoroge.visionboard.models.Category;
@@ -22,7 +25,9 @@ import okhttp3.Response;
 
 public class CategoriesActivity extends AppCompatActivity {
     public static final String TAG = CategoriesActivity.class.getSimpleName();
-    @Bind(R.id.listView)
+    //@Bind(R.id.listView)
+    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
+    private CategoryListAdapter mAdapter;
     ListView mListView;
 public ArrayList<Category> mCategories = new ArrayList<>();
 
@@ -56,13 +61,11 @@ public ArrayList<Category> mCategories = new ArrayList<>();
                 CategoriesActivity.this.runOnUiThread(new Runnable(){
                     @Override
                     public void run(){
-                        String[] categoryImages = new String[mCategories.size()];
-                        for (int i = 0; i < categoryImages.length; i++){
-                            categoryImages[i] = mCategories.get(i).getImage();
-                        }
-
-                        ArrayAdapter adapter = new ArrayAdapter(CategoriesActivity  .this, android.R.layout.simple_list_item_1, categoryImages);
-                        mListView.setAdapter(adapter);
+                        mAdapter = new CategoryListAdapter(getApplicationContext(), mCategories);
+                        mRecyclerView.setAdapter(mAdapter);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CategoriesActivity.this);
+                        mRecyclerView.setLayoutManager(layoutManager);
+                        mRecyclerView.setHasFixedSize(true);
                     }
                 });
             }

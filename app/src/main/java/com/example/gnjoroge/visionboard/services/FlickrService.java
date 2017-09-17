@@ -59,16 +59,6 @@ public class FlickrService {
                     String secret = boardJSON.getString("secret");
                     String server = boardJSON.getString("server");
 
-//JSONArray photoJSON = flickrJSON.getJSONObject("photos").getJSONArray("photo");
-
-
-//                    ArrayList<String> photo = new ArrayList<>();
-//                    JSONArray photoJSON = boardJSON.getJSONObject("photos")
-//                            .getJSONArray("photo");
-//                    for (int i = 0; i < photoJSON.length(); i++) {
-//                        photo.add(photoJSON.get(i).toString());
-//                    }
-
                     Category category = new Category(farm, id, secret, server);
                     categories.add(category);
                 }
