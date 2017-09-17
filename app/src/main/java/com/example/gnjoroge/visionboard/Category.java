@@ -10,7 +10,7 @@ public class Category {
     private String mServerId;
     private String mId;
     private String mSecrect;
-
+   // private String mImage;
 
 
 
@@ -20,14 +20,14 @@ public class Category {
         this.mId = id;
         this.mSecrect = secret;
         this.mServerId = server;
-
+        //this.mImage = image;
     }
 
 public String getFarm(){
     return mFarmId;
 }
 
-public String getId(){
+public String getId() {
     return mId;
 }
 
@@ -39,7 +39,10 @@ public String getSecret(){
     return mSecrect;
 }
 
-
+public String getImage(){
+    String imageUrl  = "https://farm"+getFarm()+".staticflickr.com/"+getServer()+"/"+getId()+"_"+getSecret()+"_m.jpg";
+    return imageUrl;
+}
 
 
 }

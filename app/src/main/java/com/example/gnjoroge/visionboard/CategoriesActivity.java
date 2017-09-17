@@ -59,7 +59,7 @@ public ArrayList<Category> mCategories = new ArrayList<>();
                     public void run(){
                         String[] categoryImages = new String[mCategories.size()];
                         for (int i = 0; i < categoryImages.length; i++){
-                            categoryImages[i] = mCategories.get(i).getId();
+                            categoryImages[i] = mCategories.get(i).getImage();
                         }
 
                         ArrayAdapter adapter = new ArrayAdapter(CategoriesActivity  .this, android.R.layout.simple_list_item_1, categoryImages);
