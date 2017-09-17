@@ -1,16 +1,15 @@
-package com.example.gnjoroge.visionboard;
+package com.example.gnjoroge.visionboard.ui;
 
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.gnjoroge.visionboard.services.FlickrService;
+import com.example.gnjoroge.visionboard.R;
+import com.example.gnjoroge.visionboard.models.Category;
 
 import java.io.IOException;
 import java.util.ArrayList;

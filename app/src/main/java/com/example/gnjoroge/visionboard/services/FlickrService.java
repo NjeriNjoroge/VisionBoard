@@ -1,8 +1,11 @@
-package com.example.gnjoroge.visionboard;
+package com.example.gnjoroge.visionboard.services;
 
 /**
  * Created by gnjoroge on 9/15/17.
  */
+import com.example.gnjoroge.visionboard.Constants;
+import com.example.gnjoroge.visionboard.models.Category;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,8 +1,7 @@
-package com.example.gnjoroge.visionboard;
+package com.example.gnjoroge.visionboard.ui;
 
         import android.content.Intent;
         import android.graphics.Color;
-        import android.graphics.Paint;
         import android.graphics.Typeface;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
@@ -10,6 +9,8 @@ package com.example.gnjoroge.visionboard;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.TextView;
+
+        import com.example.gnjoroge.visionboard.R;
 
         import butterknife.Bind;
         import butterknife.ButterKnife;

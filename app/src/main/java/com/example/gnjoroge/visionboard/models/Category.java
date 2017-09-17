@@ -1,4 +1,4 @@
-package com.example.gnjoroge.visionboard;
+package com.example.gnjoroge.visionboard.models;
 
 /**
  * Created by gnjoroge on 9/15/17.
