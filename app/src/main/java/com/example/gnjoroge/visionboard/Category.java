@@ -10,17 +10,17 @@ public class Category {
     private String mServerId;
     private String mId;
     private String mSecrect;
-    private String mImage;
 
 
 
-    public Category(String farm, String server, String id, String secret, String image) {
+
+    public Category(String farm, String server, String id, String secret) {
 
         this.mFarmId = farm;
         this.mId = id;
         this.mSecrect = secret;
         this.mServerId = server;
-        this.mImage = image;
+
     }
 
 public String getFarm(){
@@ -39,7 +39,7 @@ public String getSecret(){
     return mSecrect;
 }
 
-public String getImage(){
-    return mImage;
-}
+
+
+
 }

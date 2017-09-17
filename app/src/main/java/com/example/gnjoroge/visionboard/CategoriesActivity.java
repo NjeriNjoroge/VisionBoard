@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -21,32 +22,10 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class CategoriesActivity extends AppCompatActivity {
-    private static final String TAG = CategoriesActivity.class.getSimpleName();
+    public static final String TAG = CategoriesActivity.class.getSimpleName();
     @Bind(R.id.listView)
     ListView mListView;
-    private String[] categories = new String[]{"Finances", "Relationships", "Career", "Health", "Travel", "Personal growth"};
-
-
-    private void getPhotos(String category) {
-        final FlickrService flickrService = new FlickrService();
-        flickrService.findPhotos(category, new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                e.printStackTrace();
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException{
-                try {
-                    String jsonData = response.body().string();
-                    Log.v(TAG, jsonData);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-
-        });
-    }
+public ArrayList<Category> mCategories = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,24 +33,44 @@ public class CategoriesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_categories);
         ButterKnife.bind(this);
 
+
         Intent intent = getIntent();
         String category = intent.getStringExtra("category");
         getPhotos(category);
 
-        //displaying the categories
-        mListView = (ListView) findViewById(R.id.listView);
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, categories);
-        mListView.setAdapter(adapter);
+    }
 
-        //adding a toast for each suggested category
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+    //creating a callback for the Flickr service
+    private void getPhotos(String category){
+
+        final FlickrService flickrService = new FlickrService();
+        flickrService.findPhotos(category, new Callback(){
+
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String categories = ((TextView) view).getText().toString();
-                Toast.makeText(CategoriesActivity.this, categories, Toast.LENGTH_SHORT).show();
+            public void onFailure(Call call, IOException e){
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) {
+                mCategories = flickrService .processResults(response);
+                CategoriesActivity.this.runOnUiThread(new Runnable(){
+                    @Override
+                    public void run(){
+                        String[] categoryImages = new String[mCategories.size()];
+                        for (int i = 0; i < categoryImages.length; i++){
+                            categoryImages[i] = mCategories.get(i).getId();
+                        }
+
+                        ArrayAdapter adapter = new ArrayAdapter(CategoriesActivity  .this, android.R.layout.simple_list_item_1, categoryImages);
+                        mListView.setAdapter(adapter);
+                    }
+                });
             }
         });
     }
+
+
 
 
 }//end
