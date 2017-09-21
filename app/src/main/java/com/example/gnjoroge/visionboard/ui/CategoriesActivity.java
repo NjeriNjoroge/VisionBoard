@@ -2,19 +2,28 @@ package com.example.gnjoroge.visionboard.ui;
 
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+
 
 import com.example.gnjoroge.visionboard.adapters.CategoryListAdapter;
 import com.example.gnjoroge.visionboard.services.FlickrService;
 import com.example.gnjoroge.visionboard.R;
 import com.example.gnjoroge.visionboard.models.Category;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -23,13 +32,15 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
+
+
 public class CategoriesActivity extends AppCompatActivity {
     public static final String TAG = CategoriesActivity.class.getSimpleName();
-    //@Bind(R.id.listView)
+    //@Bind(R.id.listView) ListView mListView;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private CategoryListAdapter mAdapter;
-    ListView mListView;
-public ArrayList<Category> mCategories = new ArrayList<>();
+
+    public ArrayList<Category> mCategories = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

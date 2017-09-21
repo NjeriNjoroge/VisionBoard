@@ -15,9 +15,9 @@ public class Constants {
     public static final String FLICKR_CONSUMER_SECRET = BuildConfig.FLICKR_CONSUMER_SECRET;
 
     //building a request
-    public static final String FLICKR_BASE_URL = "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent&api_key=" + FLICKR_CONSUMER_KEY + "&text=&format=json&nojsoncallback=1";
+    public static final String FLICKR_BASE_URL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=" + FLICKR_CONSUMER_KEY + "&text=&format=json&nojsoncallback=1";
 
 
-    public static final String FLICKR_CATEGORY_QUERY_PARAMETER = "category";
+    public static final String FLICKR_CATEGORY_QUERY_PARAMETER = "text";
 
 }

@@ -1,5 +1,11 @@
 package com.example.gnjoroge.visionboard.models;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
+import java.io.IOException;
+import java.net.URL;
+
 /**
  * Created by gnjoroge on 9/15/17.
  */
@@ -10,7 +16,8 @@ public class Category {
     private String mServerId;
     private String mId;
     private String mSecrect;
-   // private String mImage;
+
+    //private String mTitle;
 
 
 
@@ -20,7 +27,7 @@ public class Category {
         this.mId = id;
         this.mSecrect = secret;
         this.mServerId = server;
-        //this.mImage = image;
+        //this.mTitle = title;
     }
 
 public String getFarm(){
@@ -39,10 +46,27 @@ public String getSecret(){
     return mSecrect;
 }
 
+////public String getTitle(){
+//        return mTitle;
+//    }
+
+
 public String getImage(){
-    String imageUrl  = "https://farm"+getFarm()+".staticflickr.com/"+getServer()+"/"+getId()+"_"+getSecret()+"_m.jpg";
+    String imageUrl  = "https://farm"+getFarm()+".staticflickr.com/"+getServer()+"/"+getId()+"_"+getSecret()+"_s.jpg";
     return imageUrl;
 }
+//public Bitmap getImage(){
+//    String imageUrl  = "https://farm"+getFarm()+".staticflickr.com/"+getServer()
+//            +"/"+getId()+"_"+getSecret()+"_m.jpg";
+//    try {
+//        URL url = new URL(imageUrl);
+//        return BitmapFactory.decodeStream(url.openStream());
+//    } catch (IOException e) {
+//        e.printStackTrace();
+//        return null;
+//    }
+//}
+
 
 
 }

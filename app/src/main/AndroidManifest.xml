@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.gnjoroge.visionboard">
 
 
@@ -23,7 +24,8 @@
         <activity android:name=".ui.CategoriesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gnjoroge.visionboard.ui.MainActivity">
+                android:value="com.example.gnjoroge.visionboard.ui.MainActivity"
+                tools:replace="android:value">
             </meta-data>
         </activity>
         <activity android:name=".ui.CreatedCategory">

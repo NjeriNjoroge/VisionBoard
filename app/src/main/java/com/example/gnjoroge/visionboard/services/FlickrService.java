@@ -3,6 +3,9 @@ package com.example.gnjoroge.visionboard.services;
 /**
  * Created by gnjoroge on 9/15/17.
  */
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import com.example.gnjoroge.visionboard.Constants;
 import com.example.gnjoroge.visionboard.models.Category;
 
@@ -11,6 +14,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -19,6 +23,8 @@ import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+
+import static com.example.gnjoroge.visionboard.R.id.imageView;
 
 
 public class FlickrService {
@@ -34,6 +40,7 @@ public class FlickrService {
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.FLICKR_BASE_URL)
                 .newBuilder();
         urlBuilder.addQueryParameter(Constants.FLICKR_CATEGORY_QUERY_PARAMETER, category);
+        urlBuilder.addQueryParameter("per_page", "20");
         String url = urlBuilder.build().toString();
 
         Request request = new Request.Builder()
@@ -59,7 +66,7 @@ public class FlickrService {
                     String secret = boardJSON.getString("secret");
                     String server = boardJSON.getString("server");
 
-                    Category category = new Category(farm, id, secret, server);
+                    Category category = new Category(farm, server, id, secret);
                     categories.add(category);
                 }
             }

@@ -2,6 +2,7 @@ package com.example.gnjoroge.visionboard.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,17 +11,22 @@ import android.widget.TextView;
 
 import com.example.gnjoroge.visionboard.R;
 import com.example.gnjoroge.visionboard.models.Category;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import static com.example.gnjoroge.visionboard.R.id.imageView;
+
 /**
  * Created by gnjoroge on 9/17/17.
  */
 
 public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapter.CategoryViewHolder> {
+
+    private static final String TAG = "CategoryListAdapter";
     private ArrayList<Category> mCategories = new ArrayList<>();
     private Context mContext;
 
@@ -49,22 +55,26 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
+
         @Bind(R.id.restaurantImageView)
         ImageView mRestaurantImageView;
-   @Bind(R.id.restaurantNameTextView) TextView mNameTextView;
-//    @Bind(R.id.categoryTextView) TextView mCategoryTextView;
-//    @Bind(R.id.ratingTextView) TextView mRatingTextView;
-
+        @Bind(R.id.restaurantNameTextView) TextView mNameTextView;
         private Context mContext;
 
         public CategoryViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            ButterKnife.bind(CategoryViewHolder.this, itemView);
             mContext = itemView.getContext();
         }
 
         public void bindCategory(Category category) {
-            mNameTextView.setText(category.getImage());
+            Log.d(TAG, "bindCategory: " + category.getImage());
+            Picasso.with(mContext)
+                    .load(category.getImage())
+                    .resize(130, 130)
+                    .centerCrop()
+                    .into(mRestaurantImageView);
+            mNameTextView.setText(category.getId());
         }
     }
 }
