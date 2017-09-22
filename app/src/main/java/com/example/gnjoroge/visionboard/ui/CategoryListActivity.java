@@ -2,12 +2,15 @@ package com.example.gnjoroge.visionboard.ui;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 
+import com.example.gnjoroge.visionboard.Constants;
 import com.example.gnjoroge.visionboard.adapters.CategoryListAdapter;
 import com.example.gnjoroge.visionboard.services.FlickrService;
 import com.example.gnjoroge.visionboard.R;

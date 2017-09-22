@@ -1,8 +1,10 @@
 package com.example.gnjoroge.visionboard.ui;
 
         import android.content.Intent;
+        import android.content.SharedPreferences;
         import android.graphics.Color;
         import android.graphics.Typeface;
+        import android.preference.PreferenceManager;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.view.View;
@@ -10,24 +12,38 @@ package com.example.gnjoroge.visionboard.ui;
         import android.widget.EditText;
         import android.widget.TextView;
 
+        import com.example.gnjoroge.visionboard.Constants;
         import com.example.gnjoroge.visionboard.R;
+        import com.google.firebase.database.DatabaseReference;
+        import com.google.firebase.database.FirebaseDatabase;
 
         import butterknife.Bind;
         import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+
+    private DatabaseReference mSearchedCategoryReference;
+
     @Bind(R.id.textView) TextView mTitleTextView;
     @Bind(R.id.newVisionBoard) Button mNewVisionBoardButton;
     @Bind(R.id.Searchbutton) Button mSearchbutton;
     @Bind(R.id.categoryEditText) EditText mcategoryEditText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mSearchedCategoryReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCHED_CATEGORY);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
         //changing the title font
-        mTitleTextView = (TextView) findViewById(R.id.textView);
+        //mTitleTextView = (TextView) findViewById(R.id.textView);
         Typeface caviarFont = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
         mTitleTextView.setTypeface(caviarFont);
 
@@ -44,18 +60,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //displaying the list view activity
-        mSearchbutton = (Button) findViewById(R.id.Searchbutton);
-        mSearchbutton.setOnClickListener(new View.OnClickListener(){
+//        mSearchbutton = (Button) findViewById(R.id.Searchbutton);
+        mSearchbutton.setOnClickListener(this);
+    }
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
+                if(v == mSearchbutton){
                 String category = mcategoryEditText.getText().toString();
+                    saveCategoryToFirebase(category);
                 Intent intent = new Intent(MainActivity.this, CategoryListActivity.class);
                 intent.putExtra("category", category);
                 startActivity(intent);
             }
-        });
+        }
 
-
+    private void saveCategoryToFirebase(String category) {
+        mSearchedCategoryReference.setValue(category);
     }
 
+
 }
+

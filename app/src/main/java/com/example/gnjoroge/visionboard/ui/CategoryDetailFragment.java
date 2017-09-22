@@ -74,7 +74,7 @@ public class CategoryDetailFragment extends Fragment implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (v == mCameraLabel) {
-            Intent cameraIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mCategory.getImage()));
+            Intent cameraIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(mCategory.getImage()));
             startActivity(cameraIntent);
         }
     }

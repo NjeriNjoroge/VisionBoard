@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "775961025702",
+    "firebase_url": "https://visionboard-78452.firebaseio.com",
+    "project_id": "visionboard-78452",
+    "storage_bucket": "visionboard-78452.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775961025702:android:8129f8ead83eefd7",
+        "android_client_info": {
+          "package_name": "com.example.gnjoroge.visionboard"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775961025702-j1qq270thqiuc84tvvotb168f35j4oq0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gnjoroge.visionboard",
+            "certificate_hash": "872966bb60dcf154ddd4909ca20d270d5416eb6a"
+          }
+        },
+        {
+          "client_id": "775961025702-g0rk64v3fm6j8g3mv0hvhesqga6b454q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVlbKWPuluY0zUfN9Q3TGGjVIWOt3hynk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775961025702-g0rk64v3fm6j8g3mv0hvhesqga6b454q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
