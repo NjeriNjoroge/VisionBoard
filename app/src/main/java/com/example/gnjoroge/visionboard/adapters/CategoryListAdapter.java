@@ -1,6 +1,7 @@
 package com.example.gnjoroge.visionboard.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,7 +12,10 @@ import android.widget.TextView;
 
 import com.example.gnjoroge.visionboard.R;
 import com.example.gnjoroge.visionboard.models.Category;
+import com.example.gnjoroge.visionboard.ui.CategoryDetailActivity;
 import com.squareup.picasso.Picasso;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -54,7 +58,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
     }
 
 
-    public class CategoryViewHolder extends RecyclerView.ViewHolder {
+    public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @Bind(R.id.restaurantImageView)
         ImageView mRestaurantImageView;
@@ -65,6 +69,16 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
             super(itemView);
             ButterKnife.bind(CategoryViewHolder.this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, CategoryDetailActivity.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("categories", Parcels.wrap(mCategories));
+            mContext.startActivity(intent);
         }
 
         public void bindCategory(Category category) {
