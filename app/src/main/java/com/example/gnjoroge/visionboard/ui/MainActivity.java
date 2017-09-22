@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String category = mcategoryEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, CategoriesActivity.class);
+                Intent intent = new Intent(MainActivity.this, CategoryListActivity.class);
                 intent.putExtra("category", category);
                 startActivity(intent);
             }

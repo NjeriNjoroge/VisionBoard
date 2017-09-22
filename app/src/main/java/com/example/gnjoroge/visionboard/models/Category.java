@@ -3,6 +3,8 @@ package com.example.gnjoroge.visionboard.models;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import org.parceler.Parcel;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -10,6 +12,7 @@ import java.net.URL;
  * Created by gnjoroge on 9/15/17.
  */
 
+@Parcel
 public class Category {
 
     private String mFarmId;
@@ -17,9 +20,8 @@ public class Category {
     private String mId;
     private String mSecrect;
 
-    //private String mTitle;
 
-
+public Category () {}
 
     public Category(String farm, String server, String id, String secret) {
 
@@ -46,27 +48,13 @@ public String getSecret(){
     return mSecrect;
 }
 
-////public String getTitle(){
-//        return mTitle;
-//    }
+
 
 
 public String getImage(){
-    String imageUrl  = "https://farm"+getFarm()+".staticflickr.com/"+getServer()+"/"+getId()+"_"+getSecret()+"_s.jpg";
+    String imageUrl  = "https://farm"+getFarm()+".staticflickr.com/"+getServer()+"/"+getId()+"_"+getSecret()+".jpg";
     return imageUrl;
 }
-//public Bitmap getImage(){
-//    String imageUrl  = "https://farm"+getFarm()+".staticflickr.com/"+getServer()
-//            +"/"+getId()+"_"+getSecret()+"_m.jpg";
-//    try {
-//        URL url = new URL(imageUrl);
-//        return BitmapFactory.decodeStream(url.openStream());
-//    } catch (IOException e) {
-//        e.printStackTrace();
-//        return null;
-//    }
-//}
-
 
 
 }

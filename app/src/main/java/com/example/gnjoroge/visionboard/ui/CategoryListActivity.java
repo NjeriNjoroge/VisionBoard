@@ -2,28 +2,18 @@ package com.example.gnjoroge.visionboard.ui;
 
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.ImageView;
-import android.widget.ListView;
 
 
 import com.example.gnjoroge.visionboard.adapters.CategoryListAdapter;
 import com.example.gnjoroge.visionboard.services.FlickrService;
 import com.example.gnjoroge.visionboard.R;
 import com.example.gnjoroge.visionboard.models.Category;
-import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -34,8 +24,8 @@ import okhttp3.Response;
 
 
 
-public class CategoriesActivity extends AppCompatActivity {
-    public static final String TAG = CategoriesActivity.class.getSimpleName();
+public class CategoryListActivity extends AppCompatActivity {
+    public static final String TAG = CategoryListActivity.class.getSimpleName();
     //@Bind(R.id.listView) ListView mListView;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private CategoryListAdapter mAdapter;
@@ -69,12 +59,12 @@ public class CategoriesActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) {
                 mCategories = flickrService .processResults(response);
-                CategoriesActivity.this.runOnUiThread(new Runnable(){
+                CategoryListActivity.this.runOnUiThread(new Runnable(){
                     @Override
                     public void run(){
                         mAdapter = new CategoryListAdapter(getApplicationContext(), mCategories);
                         mRecyclerView.setAdapter(mAdapter);
-                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CategoriesActivity.this);
+                        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(CategoryListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                     }

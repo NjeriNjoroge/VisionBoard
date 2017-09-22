@@ -58,7 +58,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
         @Bind(R.id.restaurantImageView)
         ImageView mRestaurantImageView;
-        @Bind(R.id.restaurantNameTextView) TextView mNameTextView;
+       // @Bind(R.id.restaurantNameTextView) TextView mNameTextView;
         private Context mContext;
 
         public CategoryViewHolder(View itemView) {
@@ -68,13 +68,13 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
         }
 
         public void bindCategory(Category category) {
-            Log.d(TAG, "bindCategory: " + category.getImage());
+            //Log.d(TAG, "bindCategory: " + category.getImage());
             Picasso.with(mContext)
                     .load(category.getImage())
-                    .resize(130, 130)
+                    .resize(200, 200)
                     .centerCrop()
                     .into(mRestaurantImageView);
-            mNameTextView.setText(category.getId());
+            //mNameTextView.setText(category.getId());
         }
     }
 }

@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.gnjoroge.visionboard">
 
-
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.MainActivity"
+        <activity
+            android:name=".ui.MainActivity"
             android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,19 +21,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.CategoriesActivity">
+        <activity android:name=".ui.CategoryListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.gnjoroge.visionboard.ui.MainActivity"
-                tools:replace="android:value">
-            </meta-data>
+                tools:replace="android:value"></meta-data>
         </activity>
         <activity android:name=".ui.CreatedCategory">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gnjoroge.visionboard.ui.CategoriesActivity">
-            </meta-data>
+                android:value="com.example.gnjoroge.visionboard.ui.CategoryListActivity"></meta-data>
         </activity>
+        <activity android:name=".ui.CategoryDetailActivity"></activity>
     </application>
 
 </manifest>
