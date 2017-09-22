@@ -35,7 +35,7 @@ public class CategoryPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int postion) {
-        return mCategories.get(postion).getFarm();
+        return mCategories.get(postion).getTitle();
     }
 }
 

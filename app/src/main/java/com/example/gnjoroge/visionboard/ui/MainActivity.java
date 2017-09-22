@@ -1,29 +1,35 @@
 package com.example.gnjoroge.visionboard.ui;
 
-        import android.content.Intent;
+import android.content.Intent;
         import android.content.SharedPreferences;
         import android.graphics.Color;
         import android.graphics.Typeface;
         import android.preference.PreferenceManager;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
-        import android.view.View;
+import android.util.Log;
+import android.view.View;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.TextView;
 
         import com.example.gnjoroge.visionboard.Constants;
         import com.example.gnjoroge.visionboard.R;
-        import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
         import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-        import butterknife.Bind;
+import butterknife.Bind;
         import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     private DatabaseReference mSearchedCategoryReference;
+
+    private ValueEventListener mSearchedCategoryReferenceListener;
 
     @Bind(R.id.textView) TextView mTitleTextView;
     @Bind(R.id.newVisionBoard) Button mNewVisionBoardButton;
@@ -34,9 +40,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
 
         mSearchedCategoryReference = FirebaseDatabase
-                .getInstance()
-                .getReference()
-                .child(Constants.FIREBASE_CHILD_SEARCHED_CATEGORY);
+        .getInstance()
+        .getReference()
+        .child(Constants.FIREBASE_CHILD_SEARCHED_CATEGORY);
+
+        mSearchedCategoryReferenceListener = mSearchedCategoryReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot categorySnapShot : dataSnapshot.getChildren()) {
+                    String category = categorySnapShot.getValue().toString();
+                    Log.d("Categories updated", "category: " + category);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -52,32 +74,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mNewVisionBoardButton.setTextColor(Color.parseColor("white"));
         //displays the activity for creating a new category
         mNewVisionBoardButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CreatedCategory.class);
-                startActivity(intent);
-            }
+        @Override
+        public void onClick(View view) {
+        Intent intent = new Intent(MainActivity.this, CreatedCategory.class);
+        startActivity(intent);
+        }
         });
 
         //displaying the list view activity
-//        mSearchbutton = (Button) findViewById(R.id.Searchbutton);
+        //        mSearchbutton = (Button) findViewById(R.id.Searchbutton);
         mSearchbutton.setOnClickListener(this);
     }
-            @Override
-            public void onClick(View v) {
-                if(v == mSearchbutton){
-                String category = mcategoryEditText.getText().toString();
-                    saveCategoryToFirebase(category);
-                Intent intent = new Intent(MainActivity.this, CategoryListActivity.class);
-                intent.putExtra("category", category);
-                startActivity(intent);
-            }
+    @Override
+    public void onClick(View v) {
+        if(v == mSearchbutton){
+        String category = mcategoryEditText.getText().toString();
+        saveCategoryToFirebase(category);
+        Intent intent = new Intent(MainActivity.this, CategoryListActivity.class);
+        intent.putExtra("category", category);
+        startActivity(intent);
         }
-
-    private void saveCategoryToFirebase(String category) {
-        mSearchedCategoryReference.setValue(category);
     }
 
+    public void saveCategoryToFirebase(String category) {
+        mSearchedCategoryReference.push().setValue(category);
+    }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mSearchedCategoryReference.removeEventListener(mSearchedCategoryReferenceListener);
+    }
 }
 

@@ -65,8 +65,9 @@ public class FlickrService {
                     String id = boardJSON.getString("id");
                     String secret = boardJSON.getString("secret");
                     String server = boardJSON.getString("server");
+                    String title = boardJSON.getString("title");
 
-                    Category category = new Category(farm, server, id, secret);
+                    Category category = new Category(farm, server, id, secret,title);
                     categories.add(category);
                 }
             }

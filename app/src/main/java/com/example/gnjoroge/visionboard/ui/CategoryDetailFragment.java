@@ -10,9 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.gnjoroge.visionboard.Constants;
 import com.example.gnjoroge.visionboard.R;
 import com.example.gnjoroge.visionboard.models.Category;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
@@ -30,7 +34,7 @@ public class CategoryDetailFragment extends Fragment implements View.OnClickList
 
     @Bind(R.id.categoryImageView) ImageView mImageLabel;
     @Bind(R.id.cameraTextView) TextView mCameraLabel;
-    @Bind(R.id.savePictureButton) TextView mSaveRestaurantButton;
+    @Bind(R.id.savePictureButton) TextView mSavePictureButton;
 
     private Category mCategory;
 
@@ -67,6 +71,8 @@ public class CategoryDetailFragment extends Fragment implements View.OnClickList
                 .into(mImageLabel);
         mCameraLabel.setText("Take a picture");
 
+        mSavePictureButton.setOnClickListener(this);
+
         return view;
 
     }
@@ -76,6 +82,14 @@ public class CategoryDetailFragment extends Fragment implements View.OnClickList
         if (v == mCameraLabel) {
             Intent cameraIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(mCategory.getImage()));
             startActivity(cameraIntent);
+        }
+
+        if(v == mSavePictureButton) {
+            DatabaseReference categoryRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_CATEGORY);
+            categoryRef.push().setValue(mCategory);
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }
 

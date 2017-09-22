@@ -15,41 +15,42 @@ import java.net.URL;
 @Parcel
 public class Category {
 
-    private String mFarmId;
-    private String mServerId;
-    private String mId;
-    private String mSecrect;
-
+    private String FarmId;
+    private String ServerId;
+    private String Id;
+    private String Secrect;
+    private String Title;
 
 public Category () {}
 
-    public Category(String farm, String server, String id, String secret) {
+    public Category(String farm, String server, String id, String secret, String title) {
 
-        this.mFarmId = farm;
-        this.mId = id;
-        this.mSecrect = secret;
-        this.mServerId = server;
-        //this.mTitle = title;
+        this.FarmId = farm;
+        this.Id = id;
+        this.Secrect = secret;
+        this.ServerId = server;
+        this.Title = title;
     }
 
 public String getFarm(){
-    return mFarmId;
+    return FarmId;
 }
 
 public String getId() {
-    return mId;
+    return Id;
 }
 
 public String getServer(){
-    return mServerId;
+    return ServerId;
+}
+
+public String getTitle() {
+    return Title;
 }
 
 public String getSecret(){
-    return mSecrect;
+    return Secrect;
 }
-
-
-
 
 public String getImage(){
     String imageUrl  = "https://farm"+getFarm()+".staticflickr.com/"+getServer()+"/"+getId()+"_"+getSecret()+".jpg";
