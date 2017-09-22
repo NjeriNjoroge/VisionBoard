@@ -1,6 +1,8 @@
 package com.example.gnjoroge.visionboard.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,7 +23,10 @@ import butterknife.ButterKnife;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CategoryDetailFragment extends Fragment {
+public class CategoryDetailFragment extends Fragment implements View.OnClickListener {
+
+    private static final int MAX_WIDTH = 400;
+    private static final int MAX_HEIGHT = 300;
 
     @Bind(R.id.categoryImageView) ImageView mImageLabel;
     @Bind(R.id.cameraTextView) TextView mCameraLabel;
@@ -53,12 +58,25 @@ public class CategoryDetailFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_category_detail, container, false);
         ButterKnife.bind(this, view);
+        mCameraLabel.setOnClickListener(this);
 
-        Picasso.with(view.getContext()).load(mCategory.getImage()).into(mImageLabel);
+        Picasso.with(view.getContext())
+                .load(mCategory.getImage())
+                .resize(MAX_WIDTH, MAX_HEIGHT)
+                .centerCrop()
+                .into(mImageLabel);
         mCameraLabel.setText("Take a picture");
 
         return view;
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == mCameraLabel) {
+            Intent cameraIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(mCategory.getImage()));
+            startActivity(cameraIntent);
+        }
     }
 
 }
