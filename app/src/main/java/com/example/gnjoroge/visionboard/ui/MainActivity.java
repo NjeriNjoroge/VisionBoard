@@ -32,9 +32,12 @@ import butterknife.Bind;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private DatabaseReference mSearchedCategoryReference;
+//    private DatabaseReference mSearchedCategoryReference;
+//
+//    private ValueEventListener mSearchedCategoryReferenceListener;
 
-    private ValueEventListener mSearchedCategoryReferenceListener;
+    private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
     @Bind(R.id.textView) TextView mTitleTextView;
     @Bind(R.id.newVisionBoard) Button mNewVisionBoardButton;
@@ -87,12 +90,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             }
         });
-
-        //displaying the list view activity
-        //        mSearchbutton = (Button) findViewById(R.id.Searchbutton);
         mSearchbutton.setOnClickListener(this);
         mSavedImagesButton.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if (user != null) {
+                    getSupportActionBar().setTitle("Welcome, " + user.getDisplayName() + "!");
+                } else {
+
+                }
+
+            }
+        };
+
+    }  //onCreate
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mAuth.addAuthStateListener(mAuthListener);
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
     @Override
     public void onClick(View v) {
         if(v == mSearchbutton){
