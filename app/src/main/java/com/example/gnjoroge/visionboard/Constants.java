@@ -22,4 +22,6 @@ public class Constants {
     public static final String FIREBASE_CHILD_SEARCHED_CATEGORY = "searchedCategory";
 
     public static final String FIREBASE_CHILD_CATEGORY = "categories";
+
+    public static final String PREFERENCE_CATEGORY_KEY = "text";
 }
