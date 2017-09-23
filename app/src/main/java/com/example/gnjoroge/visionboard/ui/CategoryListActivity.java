@@ -28,6 +28,8 @@ import okhttp3.Response;
 
 
 public class CategoryListActivity extends AppCompatActivity {
+
+
     public static final String TAG = CategoryListActivity.class.getSimpleName();
     //@Bind(R.id.listView) ListView mListView;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
