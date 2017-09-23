@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.newVisionBoard) Button mNewVisionBoardButton;
     @Bind(R.id.Searchbutton) Button mSearchbutton;
     @Bind(R.id.categoryEditText) EditText mcategoryEditText;
+    @Bind(R.id.savedImagesButton) Button mSavedImagesButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //displaying the list view activity
         //        mSearchbutton = (Button) findViewById(R.id.Searchbutton);
         mSearchbutton.setOnClickListener(this);
+        mSavedImagesButton.setOnClickListener(this);
     }
     @Override
     public void onClick(View v) {
@@ -93,6 +96,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent = new Intent(MainActivity.this, CategoryListActivity.class);
         intent.putExtra("category", category);
         startActivity(intent);
+        }
+
+        if(v == mSavedImagesButton) {
+            Intent intent = new Intent(MainActivity.this, SavedImageListActivity.class);
+            startActivity(intent);
         }
     }
 

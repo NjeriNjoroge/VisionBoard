@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,7 +35,7 @@ public class CategoryDetailFragment extends Fragment implements View.OnClickList
 
     @Bind(R.id.categoryImageView) ImageView mImageLabel;
     @Bind(R.id.cameraTextView) TextView mCameraLabel;
-    @Bind(R.id.savePictureButton) TextView mSavePictureButton;
+    @Bind(R.id.savePictureButton) Button mSavePictureButton;
 
     private Category mCategory;
 
@@ -47,21 +48,23 @@ public class CategoryDetailFragment extends Fragment implements View.OnClickList
         categoryDetailFragment.setArguments(args);
         return categoryDetailFragment;
     }
+    /*
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        mCategory = Parcels.unwrap(getArguments().getParcelable("category"));
-    }
 
+    }
+*/
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_category_detail, container, false);
         ButterKnife.bind(this, view);
+
+        mCategory = Parcels.unwrap(getArguments().getParcelable("category"));
         mCameraLabel.setOnClickListener(this);
 
         Picasso.with(view.getContext())

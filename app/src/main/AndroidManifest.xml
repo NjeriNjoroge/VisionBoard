@@ -15,24 +15,28 @@
         <activity
             android:name=".ui.MainActivity"
             android:theme="@style/NoActionBarTheme">
+        </activity>
+        <activity android:name=".ui.CategoryListActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gnjoroge.visionboard.ui.MainActivity"
+                tools:replace="android:value" />
+        </activity>
+        <activity android:name=".ui.CreatedCategory">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.gnjoroge.visionboard.ui.CategoryListActivity" />
+        </activity>
+        <activity android:name=".ui.CategoryDetailActivity" />
+        <activity android:name=".ui.SavedImageListActivity" />
+        <activity android:name=".ui.CreateAccountActivity" />
+        <activity android:name=".ui.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.CategoryListActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gnjoroge.visionboard.ui.MainActivity"
-                tools:replace="android:value"></meta-data>
-        </activity>
-        <activity android:name=".ui.CreatedCategory">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.gnjoroge.visionboard.ui.CategoryListActivity"></meta-data>
-        </activity>
-        <activity android:name=".ui.CategoryDetailActivity"></activity>
     </application>
 
 </manifest>
