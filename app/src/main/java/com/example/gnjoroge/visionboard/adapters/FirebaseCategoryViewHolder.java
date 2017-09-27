@@ -3,6 +3,7 @@ package com.example.gnjoroge.visionboard.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -48,7 +49,7 @@ public class FirebaseCategoryViewHolder extends RecyclerView.ViewHolder implemen
 //        TextView cameraTextView = (TextView) mView.findViewById(R.id.cameraTextView);
 //        TextView savePictureButton = (TextView)
 //        Text(R.id.savePictureButton) TextView mSavePictureButton;
-
+    Log.d("image url", category.getImage());
         Picasso.with(mContext)
                 .load(category.getImage())
                 .resize(MAX_WIDTH, MAX_HEIGHT)
