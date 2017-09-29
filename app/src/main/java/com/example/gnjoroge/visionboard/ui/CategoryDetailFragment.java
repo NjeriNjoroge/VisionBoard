@@ -6,6 +6,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -38,6 +41,7 @@ public class CategoryDetailFragment extends Fragment implements View.OnClickList
     @Bind(R.id.savePictureButton) Button mSavePictureButton;
 
     private Category mCategory;
+//    private String mSource;
 
 
     public static CategoryDetailFragment newInstance(Category category) {
@@ -48,15 +52,39 @@ public class CategoryDetailFragment extends Fragment implements View.OnClickList
         categoryDetailFragment.setArguments(args);
         return categoryDetailFragment;
     }
-    /*
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
     }
-*/
+
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        if (mSource.equals(Constants.SOURCE_SAVED)) {
+//            inflater.inflate(R.menu.menu_photo, menu);
+//        } else {
+//            inflater.inflate(R.menu.menu_main, menu);
+//        }
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.action_photo:
+//                onLaunchCamera();
+//            default:
+//                break;
+//        }
+//        return false;
+//    }
+//
+//    private void onLaunchCamera() {
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

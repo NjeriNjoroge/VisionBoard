@@ -12,10 +12,21 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="180dp"
+            android:layout_height="200dp"
             android:id="@+id/categoryImageView"
             android:src="@drawable/logo"
-            android:scaleType="centerCrop" />
+            android:scaleType="fitXY"
+            android:layout_marginTop="20dp"/>
+
+        <!--<ImageView-->
+            <!--android:id="@+id/restaurantImageView"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="150dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_weight="1"-->
+            <!--android:scaleType="fitXY"-->
+            <!--android:src="@drawable/logo" />-->
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -81,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:text="View in browser"
                     android:id="@+id/cameraTextView"
-                    android:drawableLeft="@drawable/ic_camera_alt_black_24dp"
+                    android:drawableLeft="@drawable/ic_remove_red_eye_white_24dp"
                     android:drawablePadding="4dp"
                     android:textColor="@color/colorTextIcons"
                     android:textSize="15sp"

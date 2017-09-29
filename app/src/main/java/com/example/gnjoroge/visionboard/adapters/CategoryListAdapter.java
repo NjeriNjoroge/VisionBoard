@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -60,8 +61,8 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        @Bind(R.id.restaurantImageView)
-        ImageView mRestaurantImageView;
+        @Bind(R.id.restaurantImageView) ImageView mRestaurantImageView;
+
        // @Bind(R.id.restaurantNameTextView) TextView mNameTextView;
         private Context mContext;
 
@@ -85,7 +86,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
             //Log.d(TAG, "bindCategory: " + category.getImage());
             Picasso.with(mContext)
                     .load(category.getImage())
-                    .resize(200, 200)
+                   .resize(200, 200)
                     .centerCrop()
                     .into(mRestaurantImageView);
             //mNameTextView.setText(category.getId());
