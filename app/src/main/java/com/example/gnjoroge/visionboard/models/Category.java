@@ -21,6 +21,7 @@ public class Category {
     private String secret;
     private String title;
     //private String imageUrl;
+    private String pushId;
 
 
 public Category () {}
@@ -59,10 +60,14 @@ public String getImage(){
     String imageUrl  = "https://farm"+getFarm()+".staticflickr.com/"+getServer()+"/"+getId()+"_"+getSecret()+".jpg";
     return imageUrl;
 }
-//
-//public String getImage() {
-//    return imageUrl;
-//}
+
+public String getPushId() {
+    return pushId;
+}
+
+public void setPushId(String pushId) {
+    this.pushId = pushId;
+}
 
 
 }

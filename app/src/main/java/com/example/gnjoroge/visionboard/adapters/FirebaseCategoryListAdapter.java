@@ -44,6 +44,8 @@ public class FirebaseCategoryListAdapter extends FirebaseRecyclerAdapter<Categor
     @Override
     public void onItemDismiss(int position) {
 
+        getRef(position).removeValue();
+
     }
 
     @Override

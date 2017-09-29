@@ -19,6 +19,8 @@ import android.widget.Toast;
 import com.example.gnjoroge.visionboard.Constants;
 import com.example.gnjoroge.visionboard.R;
 import com.example.gnjoroge.visionboard.models.Category;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -116,9 +118,19 @@ public class CategoryDetailFragment extends Fragment implements View.OnClickList
         }
 
         if(v == mSavePictureButton) {
+            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            String uid = user.getUid();
             DatabaseReference categoryRef = FirebaseDatabase
                     .getInstance()
-                    .getReference(Constants.FIREBASE_CHILD_CATEGORY);
+                    .getReference(Constants.FIREBASE_CHILD_CATEGORY)
+                    .child(uid);
+
+            DatabaseReference pushRef = categoryRef.push();
+            String pushId = pushRef.getKey();
+            mCategory.setPushId(pushId);
+            pushRef.setValue(mCategory);
+
+
             categoryRef.push().setValue(mCategory);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
