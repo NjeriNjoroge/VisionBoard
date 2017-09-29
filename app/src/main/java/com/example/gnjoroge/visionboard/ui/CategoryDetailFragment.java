@@ -112,6 +112,7 @@ public class CategoryDetailFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
+
         if (v == mCameraLabel) {
             Intent cameraIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse(mCategory.getImage()));
             startActivity(cameraIntent);
@@ -120,6 +121,7 @@ public class CategoryDetailFragment extends Fragment implements View.OnClickList
         if(v == mSavePictureButton) {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
+
             DatabaseReference categoryRef = FirebaseDatabase
                     .getInstance()
                     .getReference(Constants.FIREBASE_CHILD_CATEGORY)
@@ -131,7 +133,7 @@ public class CategoryDetailFragment extends Fragment implements View.OnClickList
             pushRef.setValue(mCategory);
 
 
-            categoryRef.push().setValue(mCategory);
+//            categoryRef.push().setValue(mCategory);
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
     }

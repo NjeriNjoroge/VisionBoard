@@ -38,15 +38,24 @@ public class SavedImageListActivity extends AppCompatActivity implements OnStart
         ButterKnife.bind(this);
         setUpFirebaseAdapter();
 
-//        mCategoryReference = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CATEGORY);
-//        setUpFirebaseAdapter();
+
     }
+
+    //displaying the saved restaurants associated with the user
 
     private void setUpFirebaseAdapter() {
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        String uid = user.getUid();
+
         mCategoryReference = FirebaseDatabase
                 .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_CATEGORY);
+                .getReference(Constants.FIREBASE_CHILD_CATEGORY)
+                .child(uid);
+//
+//        mCategoryReference = FirebaseDatabase
+//                .getInstance()
+//                .getReference(Constants.FIREBASE_CHILD_CATEGORY);
 
         mFirebaseAdapter = new FirebaseCategoryListAdapter(Category.class, R.layout.category_list_item_drag, FirebaseCategoryViewHolder.class, mCategoryReference, this, this);
 
