@@ -2,6 +2,7 @@ package com.example.gnjoroge.visionboard.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -34,6 +35,8 @@ public class FirebaseCategoryViewHolder extends RecyclerView.ViewHolder implemen
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
 
+    public ImageView mCategoryImageView;
+
     View mView;
     Context mContext;
 
@@ -45,20 +48,20 @@ public class FirebaseCategoryViewHolder extends RecyclerView.ViewHolder implemen
     }
 
     public void bindCategory(Category category) {
-       ImageView restaurantImageView = (ImageView) mView.findViewById(R.id.restaurantImageView);
+        mCategoryImageView = mView.findViewById(R.id.categoryImageView);
+      // ImageView restaurantImageView = (ImageView) mView.findViewById(R.id.restaurantImageView);
 //        TextView cameraTextView = (TextView) mView.findViewById(R.id.cameraTextView);
 //        TextView savePictureButton = (TextView)
 //        Text(R.id.savePictureButton) TextView mSavePictureButton;
-    Log.d("image url", category.getImage());
+
         Picasso.with(mContext)
                 .load(category.getImage())
                 .resize(MAX_WIDTH, MAX_HEIGHT)
                 .centerCrop()
-                .into(restaurantImageView);
+                .into(mCategoryImageView);
 //        cameraTextView.setText(category.getTitle());
 
     }
-
     @Override
     public void onClick(View view) {
         final ArrayList<Category> categories = new ArrayList<>();
