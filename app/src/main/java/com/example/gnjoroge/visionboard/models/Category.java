@@ -20,8 +20,8 @@ public class Category {
     private String id;
     private String secret;
     private String title;
-    //private String imageUrl;
     private String pushId;
+    String index;
 
 
 public Category () {}
@@ -33,7 +33,8 @@ public Category () {}
         this.secret = secret;
         this.server = server;
         this.title = title;
-        //this.imageUrl = setImage();
+        this.index = "not_specified";
+
     }
 
 public String getFarm(){
@@ -67,6 +68,14 @@ public String getPushId() {
 
 public void setPushId(String pushId) {
     this.pushId = pushId;
+}
+
+public String getIndex() {
+    return index;
+}
+
+public void setIndex(String index) {
+    this.index = index;
 }
 
 

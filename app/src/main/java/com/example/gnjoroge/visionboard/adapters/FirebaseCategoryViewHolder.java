@@ -30,7 +30,7 @@ import butterknife.Bind;
  * Created by gnjoroge on 9/22/17.
  */
 
-public class FirebaseCategoryViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class FirebaseCategoryViewHolder extends RecyclerView.ViewHolder {
 
     private static final int MAX_WIDTH = 200;
     private static final int MAX_HEIGHT = 200;
@@ -44,15 +44,13 @@ public class FirebaseCategoryViewHolder extends RecyclerView.ViewHolder implemen
         super(itemView);
         mView = itemView;
         mContext = itemView.getContext();
-        itemView.setOnClickListener(this);
     }
 
     public void bindCategory(Category category) {
-        mCategoryImageView = mView.findViewById(R.id.categoryImageView);
-      // ImageView restaurantImageView = (ImageView) mView.findViewById(R.id.restaurantImageView);
+      //   = mView.findViewById(R.id.categoryImageView);
+       mCategoryImageView = (ImageView) mView.findViewById(R.id.categoryImageView);
 //        TextView cameraTextView = (TextView) mView.findViewById(R.id.cameraTextView);
-//        TextView savePictureButton = (TextView)
-//        Text(R.id.savePictureButton) TextView mSavePictureButton;
+//        TextView savePictureButton = (TextView) mView.findViewById(R.id.savePictureButton);
 
         Picasso.with(mContext)
                 .load(category.getImage())
@@ -61,29 +59,33 @@ public class FirebaseCategoryViewHolder extends RecyclerView.ViewHolder implemen
                 .into(mCategoryImageView);
 //        cameraTextView.setText(category.getTitle());
 
+
+
     }
-    @Override
-    public void onClick(View view) {
-        final ArrayList<Category> categories = new ArrayList<>();
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CATEGORY);
-        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    categories.add(snapshot.getValue(Category.class));
-                }
 
-                int itemPosition = getLayoutPosition();
-                Intent intent = new Intent(mContext, CategoryDetailActivity.class);
-                intent.putExtra("position", itemPosition + "");
-                intent.putExtra("categories", Parcels.wrap(categories));
-                mContext.startActivity(intent);
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
+//    @Override
+//    public void onClick(View view) {
+//        final ArrayList<Category> categories = new ArrayList<>();
+//        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_CHILD_CATEGORY);
+//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+//                    categories.add(snapshot.getValue(Category.class));
+//                }
+//
+//                int itemPosition = getLayoutPosition();
+//                Intent intent = new Intent(mContext, CategoryDetailActivity.class);
+//                intent.putExtra("position", itemPosition + "");
+//                intent.putExtra("categories", Parcels.wrap(categories));
+//                mContext.startActivity(intent);
+//            }
+//
+////            @Override
+////            public void onCancelled(DatabaseError databaseError) {
+////
+////            }
+//        });
+//    }
 }

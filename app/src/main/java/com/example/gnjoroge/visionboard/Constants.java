@@ -26,4 +26,7 @@ public class Constants {
     public static final String PREFERENCE_CATEGORY_KEY = "text";
 
     public static final String SOURCE_SAVED = "saved";
+
+    //will be used a reference to sort categories in the Query
+    public static final String FIREBASE_QUERY_INDEX = "index";
 }

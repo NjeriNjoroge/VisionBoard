@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -48,16 +49,17 @@ public class SavedImageListActivity extends AppCompatActivity implements OnStart
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
-        mCategoryReference = FirebaseDatabase
+        Query query = FirebaseDatabase
                 .getInstance()
                 .getReference(Constants.FIREBASE_CHILD_CATEGORY)
-                .child(uid);
+                .child(uid)
+                .orderByChild(Constants.FIREBASE_QUERY_INDEX);
 //
 //        mCategoryReference = FirebaseDatabase
 //                .getInstance()
 //                .getReference(Constants.FIREBASE_CHILD_CATEGORY);
 
-        mFirebaseAdapter = new FirebaseCategoryListAdapter(Category.class, R.layout.category_list_item_drag, FirebaseCategoryViewHolder.class, mCategoryReference, this, this);
+        mFirebaseAdapter = new FirebaseCategoryListAdapter(Category.class, R.layout.category_list_item_drag, FirebaseCategoryViewHolder.class, query, this, this);
 
 //        mFirebaseAdapter = new FirebaseRecyclerAdapter<Category, FirebaseCategoryViewHolder>(Category.class, R.layout.category_list_item_drag, FirebaseCategoryViewHolder.class, mCategoryReference) {
 //            @Override
