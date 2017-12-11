@@ -29,4 +29,5 @@ public class Constants {
 
     //will be used a reference to sort categories in the Query
     public static final String FIREBASE_QUERY_INDEX = "index";
+
 }

@@ -47,8 +47,8 @@ public class FirebaseCategoryViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void bindCategory(Category category) {
-      //   = mView.findViewById(R.id.categoryImageView);
-       mCategoryImageView = (ImageView) mView.findViewById(R.id.categoryImageView);
+        //   = mView.findViewById(R.id.categoryImageView);
+        mCategoryImageView = (ImageView) mView.findViewById(R.id.categoryImageView);
 //        TextView cameraTextView = (TextView) mView.findViewById(R.id.cameraTextView);
 //        TextView savePictureButton = (TextView) mView.findViewById(R.id.savePictureButton);
 

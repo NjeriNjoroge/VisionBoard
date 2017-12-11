@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * Created by gnjoroge on 9/22/17.
  */
 
+
 public class CategoryPagerAdapter extends FragmentPagerAdapter {
 
     private ArrayList<Category> mCategories;
@@ -38,4 +39,3 @@ public class CategoryPagerAdapter extends FragmentPagerAdapter {
         return mCategories.get(postion).getTitle();
     }
 }
-

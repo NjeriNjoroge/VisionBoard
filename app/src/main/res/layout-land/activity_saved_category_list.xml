@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/LinearLayout1"
     android:showDividers="middle"
     android:baselineAligned="false"
     android:orientation="horizontal"
@@ -10,11 +9,11 @@
 
     <fragment
         android:id="@+id/fragmentItemsList"
-        android:name="com.example.gnjoroge.visionboard.ui.CategoryListFragment"
+        android:name="com.example.gnjoroge.visionboard.ui.SavedImageListFragment"
         android:layout_height="match_parent"
         android:layout_width="0dp"
         android:layout_weight="3"
-        tools:layout="@layout/fragment_category_list" />
+        tools:layout="@layout/fragment_saved_image_list" />
 
     <View android:background="@color/colorAccent"
         android:layout_width="2dp"

@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
-    @Bind(R.id.textView) TextView mTitleTextView;
+    //@Bind(R.id.textView) TextView mTitleTextView;
     @Bind(R.id.newVisionBoard) Button mNewVisionBoardButton;
     @Bind(R.id.Searchbutton) Button mSearchbutton;
 //    @Bind(R.id.categoryEditText) EditText mcategoryEditText;
@@ -76,8 +76,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //changing the title font
         //mTitleTextView = (TextView) findViewById(R.id.textView);
-        Typeface caviarFont = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
-        mTitleTextView.setTypeface(caviarFont);
+//        Typeface caviarFont = Typeface.createFromAsset(getAssets(), "fonts/CaviarDreams.ttf");
+//        mTitleTextView.setTypeface(caviarFont);
 
         mNewVisionBoardButton = (Button) findViewById(R.id.newVisionBoard);
         //changes the text on the button to white

@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 public class CreatedCategory extends AppCompatActivity {
     @Bind(R.id.newVisiontextView) TextView mNewVisionTextView;
     @Bind(R.id.editText) EditText mEditText;
-    @Bind(R.id.editText2) EditText mEditText2;
+    @Bind(R.id.editText2) EditText mEditText2;  
     @Bind(R.id.Addbutton) Button mAddbutton;
 
 

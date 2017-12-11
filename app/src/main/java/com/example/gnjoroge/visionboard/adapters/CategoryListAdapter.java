@@ -2,6 +2,10 @@ package com.example.gnjoroge.visionboard.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,14 +15,19 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.gnjoroge.visionboard.Constants;
 import com.example.gnjoroge.visionboard.R;
 import com.example.gnjoroge.visionboard.models.Category;
 import com.example.gnjoroge.visionboard.ui.CategoryDetailActivity;
+
+
+import com.example.gnjoroge.visionboard.ui.CategoryDetailFragment;
 import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
 import java.util.ArrayList;
+
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -63,7 +72,7 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
 
         @Bind(R.id.restaurantImageView) ImageView mRestaurantImageView;
 
-       // @Bind(R.id.restaurantNameTextView) TextView mNameTextView;
+        // @Bind(R.id.restaurantNameTextView) TextView mNameTextView;
         private Context mContext;
 
         public CategoryViewHolder(View itemView) {
@@ -86,11 +95,10 @@ public class CategoryListAdapter extends RecyclerView.Adapter<CategoryListAdapte
             //Log.d(TAG, "bindCategory: " + category.getImage());
             Picasso.with(mContext)
                     .load(category.getImage())
-                   .resize(200, 200)
+                    .resize(200, 200)
                     .centerCrop()
                     .into(mRestaurantImageView);
             //mNameTextView.setText(category.getId());
         }
     }
 }
-

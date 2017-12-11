@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.v4.view.MotionEventCompat;
 import android.view.MotionEvent;
 import android.view.View;
+
+import com.example.gnjoroge.visionboard.ui.SavedImageListFragment;
 import com.example.gnjoroge.visionboard.util.OnStartDragListener;
 
 import com.example.gnjoroge.visionboard.models.Category;
